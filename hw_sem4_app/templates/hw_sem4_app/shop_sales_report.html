@@ -1,0 +1,49 @@
+{% extends 'hw_sem4_app/shop_base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+ <style>
+   table {
+    border-spacing: 7px 7px;
+   }
+
+  </style>
+
+{% block content %}
+   <div class="container-fluid">
+        <ul class="nav nav-pills justify-content-end align-items-end">
+            <li class="nav item"><a href="/" class="nav-link">Главная</a></li>
+        </ul>
+   </div>
+    <h2>
+       Отчёт о покупках клиента {{ client }} за {{ days }} дней:
+    </h2>
+    <h3>
+       Чтобы получить отчёт о покупках другого клиента, введите его id (целое число от 1 до {{ number_of_clients }}) в адресной строке,
+    </h3>
+    <h3>
+   после домена "shop_sales_report" и между двумя косыми чертами ("/")
+    </h3>
+       <br>
+   <table>
+  {% if sales %}
+  <tr>
+
+        {% for key in sales.0 %}
+     <th> {{ key }} </th>
+
+      {% endfor %}
+  </tr>
+  {% endif %}
+
+  {% for sale in sales %}
+  <tr>
+     {% for value in sale.values %}
+     <td> {{ value }} </td>
+     {% endfor %}
+  </tr>
+  {% endfor %}
+
+   </table>
+{% endblock %}
+

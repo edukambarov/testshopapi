@@ -1,0 +1,21 @@
+{% extends 'hw_sem4_app/shop_base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <ul class="nav nav-pills justify-content-end align-items-end">
+            <li class="nav item"><a href="/" class="nav-link">Главная</a></li>
+        </ul>
+    </div>
+    <h2>Заполните форму и загрузите изображение</h2>
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_div }}
+            <button type="submit">Отправить данные</button>
+        </form>
+    </div>
+{% endblock %}
+
+
